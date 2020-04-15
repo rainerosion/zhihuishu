@@ -4,11 +4,12 @@
 // @version      1.3.2
 // @description  智慧树刷课脚本 自动静音 自动1.25倍播放 自动答题（智慧树视频弹出的题目随便选择没事）
 // @author       rainerosion
-// @match      *://studyh5.zhihuishu.com/videoStudy.html*
+// @match        *://studyh5.zhihuishu.com/videoStudy.html*
 // @require      https://base1.zhihuishu.com/able-commons/resources/uploader/client/js/jquery/jquery-1.7.2.min.js
 // @grant        unsafeWindow
 // @license      GPL3.0
-// @supportURL   https://github.com/rainerosion/zhihuishu
+// @supportURL   https://github.com/rainerosion/zhihuishu.git
+// @updateURL    https://raw.githubusercontent.com/rainerosion/zhihuishu/master/zhihuishu-tampermonkey.js
 // ==/UserScript==
 
 (function($) {
