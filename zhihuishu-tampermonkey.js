@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         知到智慧树刷课
 // @namespace    http://rainss.cn
-// @version      1.3.2
+// @version      1.3.3
 // @description  智慧树刷课脚本 自动静音 自动1.25倍播放 自动答题（智慧树视频弹出的题目随便选择没事）
 // @author       rainerosion
 // @match        *://studyh5.zhihuishu.com/videoStudy.html*
