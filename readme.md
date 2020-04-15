@@ -16,13 +16,13 @@
 
 - 安装tampermonkey插件
 
-- 找到Tampermonkey点击
+- 打开Tampermonkey实用工具
 
-- 选择添加新脚本
+- Install from URL中填入https://raw.githubusercontent.com/rainerosion/zhihuishu/master/zhihuishu-tampermonkey.js
 
-- 复制[zhihuishui-tampermonkey.js](zhihuishu-tampermonkey.js)中的内容到输入框
+- 点击安装按钮
 
-- CTRL+S保存代码
+- 在弹出的窗口中点击安装，窗口自动关闭
 
 - 进入智慧树课程播放界面自动开始刷课
 
