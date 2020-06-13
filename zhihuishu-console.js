@@ -5,6 +5,7 @@
  *  use-method: 打开智慧树播放课程界面 按F12 -> Console -> 粘贴本代码 ->按回车键
  *  use-method: 视频左上方出现一个图标点击图标开始刷课 显示‘已开’脚本开始监听 再次点击图标关闭
  *  upadteTime: 2020/04/16 00:31:00
+ *  version      1.3.4
  */
 //定时器
 var timer;
@@ -89,24 +90,49 @@ function start(){
             $("body").removeClass("el-popup-parent--hidden");
         }else{
             //如果是单选题或者判断题选择一个答案否则移除答题框
-            if($(".title-tit").text() == "【单选题】" || $(".title-tit").text() == "【判断题】"|| $(".title-tit").text() == "【多选题】"){
+            if($(".title-tit").text() == "【单选题】" || $(".title-tit").text() == "【判断题】"){
                 //选择选项的第一个用于获取正确答案
-                $(".topic-list .topic-option-item")[0].click();
+                let list = $(".topic-list .topic-option-item");
+                list[0].click();
                 //取消已经选择的
-                $(".topic-list .topic-option-item").each(function(){
+                list.each(function(){
                     if($(this).hasClass("active")){
                         $(this).click();
                     }
                 })
                 //选择答案
-                let answer = $(".answer span").text().split(",");
-                $.each(answer,function(index,value){
-                    let option = value.charCodeAt() - 65;
-                    $(".topic-list .topic-option-item")[option].click();
-
-                });
+                let answer = $(".answer span").text();
+                let option = answer.charCodeAt() - 65;
+                $(".topic-list .topic-option-item")[option].click();
                 //延时关闭弹窗
-                setTimeout("$(\".el-dialog__wrapper.dialog-test .el-dialog__footer .dialog-footer .btn\")[0].click();",1000);
+                sleep(2000);
+                $(".el-dialog__wrapper.dialog-test .el-dialog__footer .dialog-footer .btn")[0].click();
+            }else if($(".title-tit").text() == "【多选题】"){
+                //多选题选择用于获取正确答案
+                let list = $(".topic-list .topic-option-item");
+                //选择所有的选项
+                list.each(function(){
+                    if(!$(this).hasClass("active")){
+                        $(this).click();
+                    }
+                })
+                //获取答案
+                let answer = $(".answer span").text().split(",");
+                sleep(1000);
+                //取消已经选择的
+                list.each(function(){
+                    if($(this).hasClass("active")){
+                        $(this).click();
+                    }
+                })
+                //勾选正确答案
+                for(let i in answer){
+                    let option = answer[i].charCodeAt() - 65;
+                    $(".topic-list .topic-option-item")[option].click();
+                }
+                //延时关闭弹窗
+                sleep(2000);
+                $(".el-dialog__wrapper.dialog-test .el-dialog__footer .dialog-footer .btn")[0].click();
             }else{
                 //如果不是这3个选项移除答题框以后弹框将不会出现
                 $(".v-modal").remove();
@@ -161,5 +187,10 @@ function StartOrStop(){
         console.log("刷课已停止");
     }
 }
+//延时等待
+function sleep(time) {
+    var startTime = new Date().getTime() + parseInt(time, 10);
+    while(new Date().getTime() < startTime) {}
+};
 //执行监听方法 默认填入代码后开启脚本
 StartOrStop();
